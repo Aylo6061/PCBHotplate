@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 S = 3.3/.0005
 H = 100.0-2
-L = 76.0+8
+L = 78
 # h=.16
 
 wpos = []
