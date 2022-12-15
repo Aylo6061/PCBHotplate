@@ -401,6 +401,11 @@
     (uuid f9887157-5afe-438b-9ed4-843edf932d3f)
   )
 
+  (text "THERMISTOR IS\nNOT ON PCB" (at 80.01 106.045 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid e0bcea8e-792c-4dd3-b2b4-00820c31b5b2)
+  )
+
   (hierarchical_label "THM_PROT_OUT" (shape input) (at 185.42 88.9 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid a9938c72-d8d2-4e73-9c23-a041dc4d8b57)

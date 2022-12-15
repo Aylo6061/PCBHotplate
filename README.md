@@ -22,7 +22,3 @@ Fet AOSD32334C dual nfet
 non inverting buffer SN74HCS125PWR
 
 # TODO
-
--add power supply (use whatever is in lamp?)
--add i2c temp sensor breakout
--add display (use some old i2c oled I have)
