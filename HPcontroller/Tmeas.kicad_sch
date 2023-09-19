@@ -319,11 +319,11 @@
         )
       )
     )
-    (symbol "power:+3.3V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+3.3V" (at 0 3.556 0)
+      (property "Value" "+3V3" (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -335,10 +335,10 @@
       (property "ki_keywords" "global power" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+3.3V\"" (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+3V3\"" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+3.3V_0_1"
+      (symbol "+3V3_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -364,9 +364,9 @@
           (fill (type none))
         )
       )
-      (symbol "+3.3V_1_1"
+      (symbol "+3V3_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+3.3V" (effects (font (size 1.27 1.27))))
+          (name "+3V3" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -615,31 +615,6 @@
     )
   )
 
-  (symbol (lib_id "power:+3.3V") (at 66.04 63.5 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 124e278f-0485-4df4-a776-cd60ce987bf1)
-    (property "Reference" "#PWR038" (at 66.04 67.31 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3.3V" (at 66.04 58.42 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 66.04 63.5 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 66.04 63.5 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 84f62870-c7c9-4c51-acdd-93b36034f6d3))
-    (instances
-      (project "HPcontroller"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
-          (reference "#PWR038") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 158.75 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1a472e28-7edf-4399-9944-f7e92baf79b6)
@@ -771,26 +746,26 @@
     )
   )
 
-  (symbol (lib_id "power:+3.3V") (at 151.13 58.42 0) (unit 1)
+  (symbol (lib_id "power:+3V3") (at 66.04 63.5 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 87f5eb29-aa8f-4eea-9b89-6fb4e8928a65)
-    (property "Reference" "#PWR034" (at 151.13 62.23 0)
+    (uuid 71b02b3f-2a77-4d4e-bd38-e5d59722399a)
+    (property "Reference" "#PWR018" (at 66.04 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+3.3V" (at 151.13 53.34 0)
+    (property "Value" "+3V3" (at 66.04 58.42 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 151.13 58.42 0)
+    (property "Footprint" "" (at 66.04 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 151.13 58.42 0)
+    (property "Datasheet" "" (at 66.04 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid bf8ae33c-69a3-40d4-a6ab-79e1d67d3b08))
+    (pin "1" (uuid 66bdf53d-6d91-4827-baf6-069cd09944c5))
     (instances
       (project "HPcontroller"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -865,6 +840,31 @@
     )
   )
 
+  (symbol (lib_id "power:+3V3") (at 151.13 58.42 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid a4c6d05d-83fd-4393-bb35-f4b62ac7d6fb)
+    (property "Reference" "#PWR034" (at 151.13 62.23 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3V3" (at 151.13 53.34 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 151.13 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 151.13 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 91b40cc1-c70e-41ed-806b-f0696704046b))
+    (instances
+      (project "HPcontroller"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
+          (reference "#PWR034") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 171.45 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid acf92d24-aae5-4394-9e7c-6db81740d5df)
@@ -885,6 +885,31 @@
       (project "HPcontroller"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
           (reference "#PWR035") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+3V3") (at 120.65 26.67 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b5d26c5c-eb4c-4c77-bd76-c6a7a98f18b4)
+    (property "Reference" "#PWR038" (at 120.65 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3V3" (at 120.65 21.59 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 120.65 26.67 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 120.65 26.67 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid be5e6fc5-0a22-4723-9895-56aa54051a01))
+    (instances
+      (project "HPcontroller"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
+          (reference "#PWR038") (unit 1)
         )
       )
     )
@@ -911,31 +936,6 @@
       (project "HPcontroller"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
           (reference "C4") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3.3V") (at 120.65 26.67 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid da579eb7-987d-44e3-a050-a1a944582675)
-    (property "Reference" "#PWR039" (at 120.65 30.48 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3.3V" (at 120.65 21.59 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 120.65 26.67 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 120.65 26.67 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 1063a375-e952-4eef-b0bb-30b716c0e88a))
-    (instances
-      (project "HPcontroller"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/1e79cfd4-57e0-46dc-a3a8-eabf19cd908e"
-          (reference "#PWR039") (unit 1)
         )
       )
     )

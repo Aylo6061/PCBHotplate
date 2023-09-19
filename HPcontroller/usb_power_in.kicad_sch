@@ -1183,11 +1183,11 @@
         )
       )
     )
-    (symbol "power:+3.3V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+3.3V" (at 0 3.556 0)
+      (property "Value" "+3V3" (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -1196,13 +1196,13 @@
       (property "Datasheet" "" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_keywords" "global power" (at 0 0 0)
+      (property "ki_keywords" "power-flag" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+3.3V\"" (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+3V3\"" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+3.3V_0_1"
+      (symbol "+3V3_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -1228,9 +1228,9 @@
           (fill (type none))
         )
       )
-      (symbol "+3.3V_1_1"
+      (symbol "+3V3_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+3.3V" (effects (font (size 1.27 1.27))))
+          (name "+3V3" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -1733,11 +1733,11 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 1b32489e-cb74-4f88-8b1c-895721f2b930)
   )
-  (label "CC2" (at 88.9 106.68 0) (fields_autoplaced)
+  (label "CC2" (at 88.9 104.14 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid af58d9d4-0299-4938-895e-2fff35c8721f)
   )
-  (label "CC1" (at 88.9 104.14 0) (fields_autoplaced)
+  (label "CC1" (at 88.9 106.68 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid f3883e7e-16db-4e84-9109-12ff584bb871)
   )
@@ -2296,6 +2296,34 @@
     )
   )
 
+  (symbol (lib_id "power:+3V3") (at 214.63 55.88 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b1ee6fd4-9622-4e3f-bcdc-cfe64a791610)
+    (property "Reference" "#PWR027" (at 214.63 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3V3" (at 214.63 50.8 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 214.63 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 214.63 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid b0587ec4-ba8f-482b-a3c9-929d7bc1cbf5))
+    (instances
+      (project "HPcontroller"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/2576b983-b407-4bb3-870d-6fa0fab97bf4"
+          (reference "#PWR027") (unit 1)
+        )
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/0b8713ad-7947-4b4a-b845-8beba6d3af66"
+          (reference "#PWR016") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:C") (at 68.58 33.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bff2a96c-8a19-4c6f-8edf-2b3eb4875545)
@@ -2415,31 +2443,6 @@
       (project "HPcontroller"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/0b8713ad-7947-4b4a-b845-8beba6d3af66"
           (reference "#PWR061") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3.3V") (at 214.63 55.88 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid da435500-1e59-4edf-a1fd-396e6bc4e944)
-    (property "Reference" "#PWR012" (at 214.63 59.69 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3.3V" (at 214.63 50.8 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 214.63 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 214.63 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c03f868c-43d2-4512-ad6e-6d8db0f298e9))
-    (instances
-      (project "HPcontroller"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/0b8713ad-7947-4b4a-b845-8beba6d3af66"
-          (reference "#PWR012") (unit 1)
         )
       )
     )
