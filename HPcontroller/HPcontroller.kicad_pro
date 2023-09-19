@@ -513,6 +513,14 @@
     [
       "6f9baa79-9374-4fd9-8d24-6b2920e90ab7",
       "HEATER DRIVE"
+    ],
+    [
+      "1e79cfd4-57e0-46dc-a3a8-eabf19cd908e",
+      "Temperature Measurement System"
+    ],
+    [
+      "6f313458-fa7e-4b68-8821-33171d7f459a",
+      "Controlpad"
     ]
   ],
   "text_variables": {}
