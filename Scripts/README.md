@@ -4,4 +4,4 @@ heaterPlugin.py is a kicad plugin.  It needs to be copied to your kicad plugin d
 
 This trace is continuous (closed), and should be "snipped" on an edge to connect it to whatever is supplying power to the heater.
 
-plot design may be manually edited to give you the desired design plot for a heater trace.  see [this]() blog post for more information.
+plot design may be manually edited to give you the desired design plot for a heater trace.  see [this](https://aylo6061.com/2022/12/15/pcb-hot-plate-state-of-the-art/) blog post for more information.

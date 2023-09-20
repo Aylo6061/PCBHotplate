@@ -2,53 +2,62 @@ from math import sqrt, floor, ceil
 import matplotlib.pyplot as plt
 
 
-S = 3.3/.0005
-H = 100.0-2
-L = 78
-# h=.16
+TargetResistance = 3.3 #desired heater resistance
+OhmsPerSquare = .0005 #ohms per square for 1 oz copper
+
+PatternHeight = 99 #mm, subtract off any margin you want to board edge
+PatternLength = 99
+
+S = TargetResistance/OhmsPerSquare #target number of squares
 
 wpos = []
 wneg = []
 Nlist = []
-Haxis =[]
+Haxis =[] #a list for the horizontal axis of the final list.  represents track spacing
 
-stepsize = .001
-min_h=.16
-max_h=.4
+stepsize = .001 #step size, mm
+min_h=.16 #minimun trace height, mm
+max_h=.4  #maximum trace height, mm
+
+#figure out how many steps to try between min/max h
 steps = floor((max_h-min_h)/stepsize)
 
+#iterate through solutions for a given h
 for delta in range(0, steps):
+	#calculate a height, min size+stepsize*iteration
 	h= .16+delta*stepsize
 
-	Haxis.append(h)
+	#append h for later display
+	Haxis.append(h) 
+
+	#solve for what the pattern would be at this step size
 
 	a = S
 	b = (h*S)+(2*h)
-	c = -1*((h*H)+(2*h*L)+(H*L))
-
-	# print(f'a {a} b {b} c {c}')
+	c = -1*((h*PatternHeight)+(2*h*PatternLength)+(PatternHeight*PatternLength))
 
 	try:
 		pos_root=(-b+sqrt(b**2-4*a*c))/(2*a)
 	except ValueError:
-		pass
-	wpos.append(pos_root)
+		pass #its possible that there is no real positive root
+	wpos.append(pos_root) #append the positive width 
 
-	N = (H-2*pos_root)/(2*pos_root+2*h)
-	Htot = 2*pos_root + N * (2*pos_root+2*h)
+	N = (PatternHeight-2*pos_root)/(2*pos_root+2*h) #number of pattern repeats
+	Htot = 2*pos_root + N * (2*pos_root+2*h) #total height
 	# print(f"N: {N}, Htot: {Htot}")
 	try:
 		wneg.append((-b-sqrt(b**2-4*a*c))/(2*a))
 	except ValueError:
 		pass
-	Nlist.append(N)
+	Nlist.append(N) #append negative root
 
 
 Hpruned = []
 Npruned = []
 Wpruned = []
 
-for x, y, z in zip(Haxis,Nlist, wpos):
+#prune the list so that only very nearly integer results for N repetitions are reported
+for x, y, z in zip(Haxis, Nlist, wpos):
 	if(y%1<.01):
 		Hpruned.append(x)
 		Npruned.append(y)
