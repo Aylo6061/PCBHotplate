@@ -1,8 +1,9 @@
-#include <OneWire.h>
-#include <DallasTemperature.h>
-#include <AceButton.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Adafruit_MCP23X17.h>
+#include <Wire.h>
+#include <MCP3X21.h>
+
 
 #define SCREEN_WD 128
 #define SCREEN_HT 32
@@ -10,97 +11,52 @@
 #define OLED_RESET -1
 
 Adafruit_SSD1306 display(SCREEN_WD, SCREEN_HT, &Wire, OLED_RESET);
+Adafruit_MCP23X17 mcp;
 
-using namespace ace_button;
 
-#define OW_BUS_PIN D3
-#define HEATER_PIN D0
-#define LED_RUN D10
-#define LED_HOT A1
+#define SDA_PIN D4
+#define SLC_PIN D5
 
-#define INC_PIN  D7
-#define DEC_PIN  D8
-#define STOP_GO  D6
-#define PROG_MAN D9
+#define SEL_A_PIN A3
+#define SEL_B_PIN A2
+#define INT_PIN D9
+#define HEATER_PIN A0
 
-ButtonConfig buttonConfig_STOP_GO;
-ButtonConfig buttonConfig_INC;
-ButtonConfig buttonConfig_DEC;
+#define DIV_MODE_1k 0
+#define DIV_MODE_10k 1
+#define DIV_MODE_100k 2
 
-AceButton button_STOP_GO(& buttonConfig_STOP_GO);
-AceButton button_DEC(& buttonConfig_INC);
-AceButton button_INC(& buttonConfig_DEC);
+#define BUTTON_PIN_MODE 0   // MCP23XXX pin used for interrupt
+#define BUTTON_PIN_DEC 1   // MCP23XXX pin used for interrupt
+#define BUTTON_PIN_INC 2   // MCP23XXX pin used for interrupt
+#define BUTTON_PIN_RUN 3   // MCP23XXX pin used for interrupt
 
-void handleEvent_STOP_GO(AceButton*, uint8_t, uint8_t);
-void handleEvent_DEC(AceButton*, uint8_t, uint8_t);
-void handleEvent_INC(AceButton*, uint8_t, uint8_t);
 
-OneWire  TcBus(OW_BUS_PIN);  // on pin 0, AKA A3
-DallasTemperature Tc(&TcBus);
-DeviceAddress TcAddress;
 
-// function to print a device address
-void printAddress(DeviceAddress deviceAddress)
-{
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    if (deviceAddress[i] < 16) Serial.print("0");
-    Serial.print(deviceAddress[i], HEX);
-  }
-}
+#define ADC_CUTOFF_VAL_1k 254 //below this adc value, use 10k res div
 
-bool tempSensorStart()//startup code for temp sensor
-{
-  if(TcBus.search(TcAddress))
-  {
-    Serial.print("Address found: ");
-    printAddress(TcAddress);
-    Tc.setResolution(TcAddress, 9);
-  return 1;
-  }
-  else{
-    return 0;
-  }
-}
+#define L_1k       852.09
+#define X_zero_1k  144.86
+#define K_1k         0.0287
+#define OFF_1k     -19.57
 
-float getTemp()//get the temperature, return it in float degrees c.
-{
-  Tc.requestTemperatures();
-  float tempC = Tc.getTempC(TcAddress);
-  return tempC;
-}
+#define L_10k      1173.59
+#define X_zero_10k 69.93
+#define K_10k       0.0290
+#define OFF_10k   -176.13
 
-void terminalErrorBlink()
-{
-  pinMode(D1, OUTPUT);
-  while(1){
-      digitalWrite(D1, HIGH);   // turn the LED on 
-      delay(200);               // wait for a second
-      digitalWrite(D1, LOW);    // turn the LED off
-      delay(500);               // wait for a second
-      Serial.println("error");
-  }
-}
+MCP3021 mcp3021(0x49);
 
-void happyBlink()
-{
-  pinMode(D10, OUTPUT);
-  while(1){
-      digitalWrite(D10, HIGH);   // turn the LED on 
-      delay(200);               // wait for a second
-      digitalWrite(D10, LOW);    // turn the LED off
-      delay(200);               // wait for a second
-      Serial.println(getTemp());
-  }
-  
-}
+float targTemp=0;       //target temperature
+enum state {heatOff, heatOn};
+state currentState = heatOff;
+
 
 void setupHeater()
 {
   if(!ledcSetup(0, 25000, 8))// ch0: 25khz, 8 bit
   {
     Serial.println("Heater pin channel setup failed!");
-    terminalErrorBlink();
   }
   else{
     ledcWrite(0, 0); // set initial ch0 output to 0
@@ -116,156 +72,196 @@ void heaterPower(int power)
   Serial.println(power);
 }
 
-void bangBang(float target, float currentTemp, float hyst)
+void bangBang(float currentTemp, float hyst)
 {
-  if((target- hyst)> currentTemp){
-    heaterPower(200);
+  if(currentState == heatOff)
+  {
+    heaterPower(0);
+    return;
+  }
+  if(currentState == heatOn)
+  {
+  if((targTemp- hyst)> currentTemp){
+    heaterPower(240);
   }
   else{
     heaterPower(0);
   }
+  }
+  return;
+}
+
+void set_divider(int mode){
+  if(mode == DIV_MODE_1k)
+  {
+    digitalWrite(SEL_A_PIN,1);
+    digitalWrite(SEL_B_PIN,1);
+  }
+  if(mode == DIV_MODE_10k)
+  {
+    digitalWrite(SEL_A_PIN,0);
+    digitalWrite(SEL_B_PIN,1);
+  }
+  if(mode == DIV_MODE_100k)
+  {
+    digitalWrite(SEL_A_PIN,1);
+    digitalWrite(SEL_B_PIN,0);
+  }
 }
 
 void setup() {
-  delay(1000);
   Serial.begin(115200);
   Serial.println("Hotplate Booted:");
+
+  pinMode(SEL_A_PIN, OUTPUT);
+  pinMode(SEL_B_PIN, OUTPUT);
+  set_divider(DIV_MODE_1k);
+  Serial.println("set div mode 1k");
+  
 
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x32
     Serial.println(F("SSD1306 allocation failed"));
     for(;;); // Don't proceed, loop forever
   }
+  Serial.println("screen begin");
 
   display.clearDisplay();
   display.setTextSize(3);             
   display.setTextColor(SSD1306_WHITE);
-  display.setRotation(0);
+  display.setRotation(2);
   display.setCursor(0,0);
   display.print(" PDHP!");
   display.display();
+  display.setTextSize(1);           
   delay(1000);
 
+    if (!mcp.begin_I2C()) {
+    Serial.println("Error.");
+    while (1);
+  }
+  Serial.println("mcp exp init...done");
 
+  mcp3021.init();
+  Serial.println("mcp adc init...done");
   
-  if(tempSensorStart()){
-    Serial.print("Sensor found, temp is: ");
-    Serial.println(getTemp());
-  }
-  else{
-    Serial.print("Sensor NOT found, halting");
-    while(1)
-    {
-      terminalErrorBlink();
-    }
-  }
+//  pinMode(INT_PIN, INPUT_PULLUP);
+  mcp.setupInterrupts(true, false, LOW);//mirror interrupts
 
-  button_STOP_GO.init(STOP_GO);
-  pinMode(STOP_GO, INPUT_PULLUP);
-  buttonConfig_STOP_GO.setEventHandler(handleEvent_STOP_GO);
-  buttonConfig_STOP_GO.setFeature(ButtonConfig::kFeatureClick);
+  // configure button pin for input with pull up
+  mcp.pinMode(BUTTON_PIN_MODE, INPUT_PULLUP);
+  mcp.pinMode(BUTTON_PIN_DEC, INPUT_PULLUP);
+  mcp.pinMode(BUTTON_PIN_INC, INPUT_PULLUP);
+  mcp.pinMode(BUTTON_PIN_RUN, INPUT_PULLUP);
 
-  button_DEC.init(DEC_PIN);
-  pinMode(DEC_PIN, INPUT_PULLUP);
-  buttonConfig_DEC.setEventHandler(handleEvent_DEC);
-  buttonConfig_DEC.setFeature(ButtonConfig::kFeatureClick);
-
-  button_INC.init(INC_PIN);
-  pinMode(INC_PIN, INPUT_PULLUP);
-  buttonConfig_INC.setEventHandler(handleEvent_INC);
-  buttonConfig_INC.setFeature(ButtonConfig::kFeatureClick);
-
-  pinMode(LED_RUN, OUTPUT);
-  pinMode(LED_HOT, OUTPUT);
+  // enable interrupt on button_pin
+  mcp.setupInterruptPin(BUTTON_PIN_MODE, LOW);
+  mcp.setupInterruptPin(BUTTON_PIN_DEC, LOW);
+  mcp.setupInterruptPin(BUTTON_PIN_INC, LOW);
+  mcp.setupInterruptPin(BUTTON_PIN_RUN, LOW);
+//  attachInterrupt(INT_PIN, mcp_int, FALLING);
   setupHeater();
 }
 
-float targTemp=0;       //target temperature
-bool heatEnabled=0; //heatEnabled = 1 heat up
-bool progMode;    //progMode = 1 program mode
-
-void loop(void) {
-  float tempNow;
-  tempNow = getTemp();
-  heaterPower(0);
-    
-  while(1){
-    tempNow = getTemp();
-    
-    button_STOP_GO.check();
-    button_INC.check();
-    button_DEC.check();
-    if(heatEnabled)
-    {
-    digitalWrite(LED_RUN, 1);
-    bangBang(targTemp, tempNow, .5);
-    Serial.print("Temp is: ");
-    Serial.print(tempNow);
-    Serial.print(" Target temp is: ");
-    Serial.print(targTemp);
-    }
-    else
-    {
-      digitalWrite(LED_RUN,0);
-      bangBang(0, tempNow, .5);
-      Serial.print("Temp is: ");
-      Serial.print(tempNow);
-      Serial.print(" Target temp is: ");
-      Serial.print(targTemp);
-    }
-    if(tempNow>50)
-    {
-      digitalWrite(LED_HOT, 1);
-    }
-    else
-    {
-      digitalWrite(LED_HOT,0);
-    }
+void displayTask(float temp){
   display.clearDisplay();
-  display.setTextSize(2);             
-  display.setTextColor(SSD1306_WHITE);
-  display.setRotation(0);
   display.setCursor(0,0);
   display.print("Targ ");
   display.printf("%3.0f\n",targTemp);
   display.print("Curr ");
-  display.printf("%3.0f",tempNow);
+  display.printf("%3.0f\n",temp);
+  display.print("mode ");
+  if(currentState == heatOff)
+  {
+    display.printf("OFF");  
+  }
+  if(currentState == heatOn)
+  {
+    display.printf("HEAT");  
+  }
   display.display();
-  }
 }
 
-void handleEvent_STOP_GO(AceButton* button, uint8_t eventType, uint8_t buttonState)
-{
-  switch(eventType){
-    case AceButton::kEventPressed:
-      Serial.println("stopgo");
-      heatEnabled = !heatEnabled;
+unsigned long timeWas;
+
+void checkInputs(){
+  unsigned long timeNow=millis();
+  if(timeNow-timeWas >=200)
+  {
+    timeWas = timeNow;
+  int button = mcp.getLastInterruptPin();
+  mcp.clearInterrupts();
+  Serial.print("button ");
+  Serial.println(button);
+  switch(button)
+  {
+    case 255:
       break;
-  }
-}
-
-void handleEvent_DEC(AceButton* button, uint8_t eventType, uint8_t buttonState)
-{
-  switch(eventType){
-    case AceButton::kEventPressed:
-      Serial.println("dec!");
-      if(targTemp-10>=0)
-      {
-        targTemp-=10;
+    case 0: //toggle mode
+      if (currentState == heatOff){
+        currentState = heatOn;
+        Serial.println("heatOn");
+        break;
+      }
+      if (currentState == heatOn){
+        currentState = heatOff;
+        Serial.println("heatOff");
+        break;
       }
       break;
+      
+    case 1: //dec temp
+      if(targTemp>=5){
+        targTemp-=5;
+      }
+      break;
+    case 2: //inc temp
+      if(targTemp<200){
+        targTemp+=5;
+      }
+      break;
+    case 3: //nothing!
+      break;
+  }
   }
 }
 
-void handleEvent_INC(AceButton* button, uint8_t eventType, uint8_t buttonState)
+float runConversion( int adcval, float L, float xnought, float k, float off)
 {
-  switch(eventType){
-    case AceButton::kEventPressed:
-      Serial.println("inc!");
-      if(targTemp+10<=240)
-      {
-        targTemp+=10;
-      }
-      break;
+  float ret;
+  ret = (xnought*k-log((-1*(L+off-adcval))/(off-adcval)))/k;
+  return ret;
+}
+
+float getTemp(){
+  float ret;
+  int result;
+  //read 1k
+  set_divider(DIV_MODE_1k);
+  result = mcp3021.read();
+  if(result>ADC_CUTOFF_VAL_1k)
+  {
+    ret = runConversion(result, L_1k,  X_zero_1k, K_1k, OFF_1k);
+    return ret;
+  }
+  set_divider(DIV_MODE_10k);
+  result = mcp3021.read();
+  ret = runConversion(result, L_10k,  X_zero_10k, K_10k, OFF_10k);
+  return ret;
+}
+
+void loop(void) {
+  
+  float tempNow;
+  tempNow = getTemp();
+  heaterPower(0);
+  timeWas = millis();
+  Serial.println("entering main loop...");
+    
+  while(1){
+    checkInputs();
+    tempNow = getTemp();
+    displayTask(tempNow);
+    bangBang(tempNow, 5);
   }
 }
