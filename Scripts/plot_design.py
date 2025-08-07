@@ -2,11 +2,11 @@ from math import sqrt, floor, ceil
 import matplotlib.pyplot as plt
 
 
-TargetResistance = 3.3 #desired heater resistance
+TargetResistance = 6.5 #desired heater resistance
 OhmsPerSquare = .0005 #ohms per square for 1 oz copper
 
-PatternHeight = 99 #mm, subtract off any margin you want to board edge
-PatternLength = 99
+PatternHeight = 97 #mm, subtract off any margin you want to board edge
+PatternLength = 97
 
 S = TargetResistance/OhmsPerSquare #target number of squares
 

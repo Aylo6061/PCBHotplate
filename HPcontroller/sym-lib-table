@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "project_assorted")(type "KiCad")(uri "C:/Users/Avery/Desktop/kicadlibs/project_assorted.kicad_sym")(options "")(descr ""))
+  (lib (name "PDHV_sym")(type "KiCad")(uri "C:/Users/Avery/Desktop/PDHV/PDHV_sym.kicad_sym")(options "")(descr ""))
+  (lib (name "Hotplate_Library")(type "KiCad")(uri "C:/Users/Avery/Desktop/hotplate/PCBHotplate/kicad libs/Hotplate_Library.kicad_sym")(options "")(descr ""))
+)
