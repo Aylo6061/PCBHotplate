@@ -1205,128 +1205,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+3V3"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3V3"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3V3\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "power-flag"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3V3_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3V3_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+3V3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_names
@@ -1634,6 +1512,26 @@
 			(embedded_fonts no)
 		)
 	)
+	(text_box "ENA/B Pulled up internally (200k)\nPulling up ENABLES"
+		(exclude_from_sim no)
+		(at 92.71 69.85 0)
+		(size 24.13 7.62)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "b845d0c8-16ac-4b04-ba48-a66f89f523ae")
+	)
 	(junction
 		(at 157.48 105.41)
 		(diameter 0)
@@ -1687,12 +1585,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9718a6aa-b033-48b3-91be-173e541a8c8b")
-	)
-	(junction
-		(at 114.3 67.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9f2efe91-41fb-4826-a5f3-22e498b18a02")
 	)
 	(junction
 		(at 104.14 91.44)
@@ -1785,26 +1677,6 @@
 			(type default)
 		)
 		(uuid "2b0ae6ba-1895-4418-adc2-8047fec51c39")
-	)
-	(wire
-		(pts
-			(xy 114.3 57.15) (xy 114.3 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36bf1c24-07e9-4ae7-9e33-f760e293b7e1")
-	)
-	(wire
-		(pts
-			(xy 114.3 66.04) (xy 114.3 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3729e666-4dc3-4150-b452-fff143fb985d")
 	)
 	(wire
 		(pts
@@ -2018,7 +1890,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 67.31) (xy 114.3 67.31)
+			(xy 107.95 67.31) (xy 123.19 67.31)
 		)
 		(stroke
 			(width 0)
@@ -2045,16 +1917,6 @@
 			(type default)
 		)
 		(uuid "9dd3c8ef-65ef-47a3-800e-b2578345dc6d")
-	)
-	(wire
-		(pts
-			(xy 123.19 67.31) (xy 114.3 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a1414c5d-48e5-470a-aae0-82fe150bb66e")
 	)
 	(wire
 		(pts
@@ -3549,71 +3411,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 114.3 57.15 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b55666e0-8551-4de8-834c-18634612bfd1")
-		(property "Reference" "#PWR015"
-			(at 114.3 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 114.3 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 114.3 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "cc78d43f-af2c-4a6a-a40a-2a0b4312831d")
-		)
-		(instances
-			(project "HPcontroller"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
-					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+28V")
 		(at 144.78 81.28 0)
 		(unit 1)
@@ -3815,102 +3612,6 @@
 			(project "HPcontroller"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
 					(reference "#PWR017")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 114.3 62.23 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f21b37c2-5d02-46df-98a2-ab41d32f2d9e")
-		(property "Reference" "R22"
-			(at 116.84 60.9599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 116.84 63.4999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 112.522 62.23 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 114.3 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 114.3 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Digikey PN" "RNCP0805FTD10K0CT-ND"
-			(at 114.3 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RNCP0805FTD10K0"
-			(at 114.3 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tol" ""
-			(at 114.3 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "03b720ed-9f40-4337-971f-1c8cad35ffa8")
-		)
-		(pin "2"
-			(uuid "ec21dcc1-7e35-44d5-9b6a-ec961e5ffc26")
-		)
-		(instances
-			(project "HPcontroller"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
-					(reference "R22")
 					(unit 1)
 				)
 			)
