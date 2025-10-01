@@ -552,6 +552,12 @@
           "show": true
         },
         {
+          "group_by": true,
+          "label": "MPN",
+          "name": "MPN",
+          "show": true
+        },
+        {
           "group_by": false,
           "label": "Qty",
           "name": "${QUANTITY}",
@@ -561,6 +567,12 @@
           "group_by": true,
           "label": "Value",
           "name": "Value",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "Footprint",
+          "name": "Footprint",
           "show": true
         },
         {
@@ -582,12 +594,6 @@
           "show": true
         },
         {
-          "group_by": true,
-          "label": "Footprint",
-          "name": "Footprint",
-          "show": true
-        },
-        {
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
@@ -603,12 +609,6 @@
           "group_by": false,
           "label": "MAXIMUM_PACKAGE_HEIGHT",
           "name": "MAXIMUM_PACKAGE_HEIGHT",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "MPN",
-          "name": "MPN",
           "show": false
         },
         {

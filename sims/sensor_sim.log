@@ -1,6 +1,6 @@
 LTspice 24.1.9 for Windows
 Circuit: C:\Users\Avery\Desktop\hotplate\PCBHotplate\sims\sensor_sim.net
-Start Time: Wed Sep 24 22:27:58 2025
+Start Time: Wed Oct  1 08:01:02 2025
 solver = Normal
 Maximum thread count: 8
 tnom = 27
@@ -8,8 +8,14 @@ temp = 27
 method = modified trap
 C:\Users\Avery\Desktop\hotplate\PCBHotplate\sims\sensor_sim.net(10): WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton. Increasing period to 10.
 
-V3 N006 0 PULSE(1 1.6 0 5 5 0 1 1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+V3 N007 0 PULSE(1 1.941 0 5 5 0 1 1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Avery\Desktop\hotplate\PCBHotplate\sims\sensor_sim.net(17): WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton. Increasing period to 10.
+
+V2 N002 0 PULSE(3.3 0 5 1u 1u 10 1 1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WARNING: Node nc_02 is floating.
+
 Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
 Starting Gmin stepping
 Gmin = 10
@@ -30,7 +36,7 @@ Gmin = 2.70769e-13
 Gmin = 0
 Gmin stepping succeeded in finding the operating point.
 
-Total elapsed time: 0.324 seconds.
+Total elapsed time: 0.329 seconds.
 
 Files loaded:
 C:\Users\Avery\Desktop\hotplate\PCBHotplate\sims\sensor_sim.net

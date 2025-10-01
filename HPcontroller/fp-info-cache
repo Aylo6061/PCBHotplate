@@ -1,4 +1,4 @@
-26047470163600208
+26054505747564985
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -104076,12 +104076,40 @@ LFPAK56D
 6
 6
 hotplate_Library
+MINISO8_3P1X3P2X0P65_STM
+
+LM2904ST 
+0
+8
+8
+hotplate_Library
+MINISO8_3P1X3P2X0P65_STM-L
+
+LM2904ST 
+0
+8
+8
+hotplate_Library
+MINISO8_3P1X3P2X0P65_STM-M
+
+LM2904ST 
+0
+8
+8
+hotplate_Library
 SAMESKY_UJ20-C-H-G-SMT-1-P16-TR
 
 
 0
 16
 16
+hotplate_Library
+SW_EVQ-P7J01P
+
+
+0
+4
+2
 hotplate_Library
 TENSILITY_54-00174
 

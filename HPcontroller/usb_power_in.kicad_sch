@@ -2217,7 +2217,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Requests\n5A 12V"
+	(text "Requests\n5A 28V"
 		(exclude_from_sim no)
 		(at 129.54 130.302 0)
 		(effects
@@ -3950,7 +3950,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 70.612 116.84 90)
 			(effects
 				(font
@@ -4141,7 +4141,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 135.382 77.47 90)
 			(effects
 				(font
@@ -4295,7 +4295,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 264.16 38.1 0)
 			(effects
 				(font
@@ -4370,7 +4370,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 84.582 123.19 90)
 			(effects
 				(font
@@ -4774,6 +4774,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "D78B33-0.5"
+			(at 234.95 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3a9be244-2f68-4238-8929-ee8e68dabbee")
 		)
@@ -4820,7 +4829,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 132.842 119.38 90)
 			(effects
 				(font
@@ -4908,7 +4917,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 107.442 76.2 90)
 			(effects
 				(font
@@ -5496,6 +5505,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "BUK9K25-40RAX"
+			(at 120.65 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "e208cc66-14ac-4b24-b0e3-c3ee9eec9354")
 		)
@@ -5549,7 +5567,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 83.82 66.548 90)
 			(effects
 				(font
@@ -5637,7 +5655,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 125.222 76.2 90)
 			(effects
 				(font
@@ -5801,7 +5819,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 121.412 119.38 90)
 			(effects
 				(font
@@ -5828,7 +5846,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "RC0603FR-0726K1L"
 			(at 123.19 119.38 0)
 			(effects
 				(font
@@ -5837,7 +5855,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tol" ""
+		(property "Tol" "1%"
 			(at 123.19 119.38 0)
 			(effects
 				(font
@@ -5965,7 +5983,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 145.7452 101.6 0)
 			(effects
 				(font
@@ -6194,6 +6212,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "UJ20-C-H-G-SMT-1-P16-TR"
+			(at 29.21 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "B4_A9"
 			(uuid "0009ffff-c904-4768-bdcb-3813092d1fca")
 		)
@@ -6279,7 +6306,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 64.262 111.76 90)
 			(effects
 				(font
