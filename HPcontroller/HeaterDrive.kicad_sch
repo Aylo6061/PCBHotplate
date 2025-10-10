@@ -5,7 +5,7 @@
 	(uuid "bf9baba1-eda5-4c5a-9a87-293e6a39073f")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Connector:Conn_01x01_Pin"
+		(symbol "Connector:Conn_01x02_Pin"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -21,8 +21,8 @@
 					)
 				)
 			)
-			(property "Value" "Conn_01x01_Pin"
-				(at 0 -2.54 0)
+			(property "Value" "Conn_01x02_Pin"
+				(at 0 -5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -47,7 +47,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Generic connector, single row, 01x01, script generated"
+			(property "Description" "Generic connector, single row, 01x02, script generated"
 				(at 0 0 0)
 				(effects
 					(font
@@ -82,10 +82,21 @@
 					(hide yes)
 				)
 			)
-			(symbol "Conn_01x01_Pin_1_1"
+			(symbol "Conn_01x02_Pin_1_1"
 				(rectangle
 					(start 0.8636 0.127)
 					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 -2.413)
+					(end 0 -2.667)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -106,6 +117,18 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 0.8636 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
 					(at 5.08 0 180)
 					(length 3.81)
@@ -117,6 +140,24 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1640,6 +1681,16 @@
 	)
 	(wire
 		(pts
+			(xy 153.67 62.23) (xy 153.67 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d987afd-2ec8-43c2-a0a0-525f6f46aa9f")
+	)
+	(wire
+		(pts
 			(xy 165.1 53.34) (xy 165.1 58.42)
 		)
 		(stroke
@@ -1707,16 +1758,6 @@
 			(type default)
 		)
 		(uuid "4c38f5d5-87f8-4fbb-9c9b-ebd00801b6ac")
-	)
-	(wire
-		(pts
-			(xy 153.67 58.42) (xy 153.67 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c530742-a06e-4cc0-aec3-fbdc8900e2c8")
 	)
 	(wire
 		(pts
@@ -1910,6 +1951,16 @@
 	)
 	(wire
 		(pts
+			(xy 153.67 53.34) (xy 153.67 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "993fdc7b-015f-452a-8ec1-bdf731ae8bb4")
+	)
+	(wire
+		(pts
 			(xy 153.67 53.34) (xy 160.02 53.34)
 		)
 		(stroke
@@ -1947,16 +1998,6 @@
 			(type default)
 		)
 		(uuid "b20b870c-ee72-4150-a7ed-5060bae8d63d")
-	)
-	(wire
-		(pts
-			(xy 153.67 66.04) (xy 153.67 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b4228468-039e-4379-b4f5-1a5817ec5c4c")
 	)
 	(wire
 		(pts
@@ -2453,79 +2494,6 @@
 			(project "HPcontroller"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
 					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x01_Pin")
-		(at 148.59 58.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "239182c6-8dfa-40d2-9b75-c7c0a4b91021")
-		(property "Reference" "J4"
-			(at 149.225 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn_01x01_Pin"
-			(at 149.225 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "HPfootprint:S7051-42R"
-			(at 148.59 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 148.59 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Tol" ""
-			(at 148.59 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "43722f0a-e684-4c99-8db4-066dca408769")
-		)
-		(instances
-			(project "HPcontroller"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
-					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -3281,6 +3249,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 148.59 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "88d65108-5c62-42fc-9f25-571a672b7dd0")
+		(property "Reference" "J1"
+			(at 149.225 55.4693 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x02_Pin"
+			(at 149.225 57.8936 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "hpfootprint:S7051-42R_array"
+			(at 148.59 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 148.59 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 148.59 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7e8e0536-81ad-43b5-a060-2f84401bf97c")
+		)
+		(pin "2"
+			(uuid "d0258fd4-9557-43ab-b703-1dc2b4220aa4")
+		)
+		(instances
+			(project ""
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+28V")
 		(at 160.02 49.53 0)
 		(unit 1)
@@ -3341,79 +3377,6 @@
 			(project "HPcontroller"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x01_Pin")
-		(at 148.59 66.04 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b423fabb-fb87-4c94-8f14-af8394214e80")
-		(property "Reference" "J6"
-			(at 149.225 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn_01x01_Pin"
-			(at 149.225 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "HPfootprint:S7051-42R"
-			(at 148.59 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 148.59 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Tol" ""
-			(at 148.59 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6feddebc-805f-411d-9f2f-c11c8bb6e738")
-		)
-		(instances
-			(project "HPcontroller"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/6f9baa79-9374-4fd9-8d24-6b2920e90ab7"
-					(reference "J6")
 					(unit 1)
 				)
 			)
