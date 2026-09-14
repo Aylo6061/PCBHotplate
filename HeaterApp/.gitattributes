@@ -1,0 +1,3 @@
+run text eol=lf
+remove text eol=lf
+*.py text eol=lf

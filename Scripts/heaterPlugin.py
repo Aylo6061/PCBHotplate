@@ -3,7 +3,7 @@
 import pcbnew
 
 def pcbpoint(p):
-    return pcbnew.wxPointMM(float(p[0]), float(p[1]))
+    return pcbnew.VECTOR2I_MM(float(p[0]), float(p[1]))
 
 def vectorAdd(a,b):
 	return [a[0]+b[0], a[1]+b[1]]
@@ -18,11 +18,11 @@ class heaterPlugin(pcbnew.ActionPlugin):
 		self.show_toolbar_button = True
 
 		#yea I did it- I hardcoded the constants
-		self.w = .747
-		self.h = .188
+		self.w = .762
+		self.h = .192
 		self.n = 50
-		self.L = 95
-		self.H = 95
+		self.L = 97
+		self.H = 97
 
 	def drawStraight(self,x1,y1,x2,y2,board,group):
 		track = pcbnew.PCB_TRACK(board)

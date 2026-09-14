@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Removes the HeaterApp virtual environment and caches. App data (settings +
+# logs) is kept unless you say otherwise.
+#   ./remove                # asks about app data
+#   ./remove --keep-data    # non-interactive, keep app data
+#   ./remove --remove-data  # non-interactive, delete app data too
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+case "$(uname -s)" in
+    MINGW*|MSYS*|CYGWIN*|Windows_NT)
+        DATA_DIR="${LOCALAPPDATA:-$HOME/AppData/Local}/HeaterApp" ;;
+    Darwin)
+        DATA_DIR="$HOME/Library/Application Support/HeaterApp" ;;
+    *)
+        DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/HeaterApp" ;;
+esac
+
+echo "Removing virtual environment and caches ..."
+rm -rf .venv
+find . -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+
+mode="${1:-ask}"
+if [ "$mode" = "ask" ]; then
+    if [ -d "$DATA_DIR" ]; then
+        read -r -p "Also remove app data (settings and logs) in '$DATA_DIR'? [y/N] " ans
+        case "$ans" in
+            y|Y|yes|YES) mode="--remove-data" ;;
+            *) mode="--keep-data" ;;
+        esac
+    else
+        mode="--keep-data"
+    fi
+fi
+
+if [ "$mode" = "--remove-data" ]; then
+    rm -rf "$DATA_DIR"
+    echo "App data removed."
+else
+    echo "App data kept in: $DATA_DIR"
+fi
+echo "Done. The source folder itself was left in place; delete it to remove HeaterApp completely."
