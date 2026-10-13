@@ -1,0 +1,35 @@
+{
+  "name": "IPC-7525 (default)",
+  "steps": [
+    {
+      "min_size": 1.0,
+      "reduction": 0.0
+    },
+    {
+      "min_size": 0.6,
+      "reduction": 0.05
+    },
+    {
+      "min_size": 0.4,
+      "reduction": 0.1
+    },
+    {
+      "min_size": 0.0,
+      "reduction": 0.15
+    }
+  ],
+  "source": "From pad",
+  "side": "F.Paste",
+  "thickness_mm": 0.2,
+  "shrink": {
+    "enabled": true,
+    "mode": "ipc",
+    "custom_pct": 10.0
+  },
+  "round": {
+    "enabled": true,
+    "mode": "ipc",
+    "fixed_mm": 0.1,
+    "scaled_pct": 25.0
+  }
+}
