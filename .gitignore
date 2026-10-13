@@ -24,6 +24,8 @@ fp-info-cache
 # Fabrication outputs
 *.gbr
 *.zip
+*.drl
+*.gbrjob
 
 # Netlist files (exported from Eeschema)
 *.net
