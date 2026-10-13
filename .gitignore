@@ -21,6 +21,10 @@ fp-info-cache
 # KiCad local history (nested git repo per project)
 .history/
 
+# Fabrication outputs
+*.gbr
+*.zip
+
 # Netlist files (exported from Eeschema)
 *.net
 
