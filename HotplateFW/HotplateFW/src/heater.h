@@ -4,8 +4,8 @@ enum HeaterState { heatOff, heatOn };
 
 extern HeaterState currentState;
 extern float targTemp; // target temperature
-extern int lastHeaterPower; // last power value passed to heaterPower()
+extern bool heaterIsOn; // current state of the heater drive pin
 
 void heaterSetup();
-void heaterPower(int power);
+void setHeater(bool on);
 void bangBang(float currentTemp, float hyst);

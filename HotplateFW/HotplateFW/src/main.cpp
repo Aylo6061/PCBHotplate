@@ -19,8 +19,8 @@ void debugPrintStatus(float temp) {
   Serial.print(temp);
   Serial.print("C state=");
   Serial.print(currentState == heatOn ? "HEAT" : "OFF");
-  Serial.print(" power=");
-  Serial.print(lastHeaterPower);
+  Serial.print(" heater=");
+  Serial.print(heaterIsOn ? "ON" : "OFF");
   Serial.print(" adcVoltage=");
   Serial.print(lastAdcVoltage);
   Serial.print("V adcTicks=");
@@ -40,7 +40,7 @@ void setup() {
 
 void loop() {
   float tempNow = getTemp();
-  heaterPower(0);
+  setHeater(false);
   Serial.println("entering main loop...");
 
   while (1) {
