@@ -2860,7 +2860,7 @@
 				)
 			)
 		)
-		(property "Value" "MCP6002T-E/SN"
+		(property "Value" "MCP6002-xMS"
 			(at 87.63 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3136,6 +3136,7 @@
 		)
 		(property "Description" "CAP CER 1UF 35V X7R 0805"
 			(at 69.85 41.91 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5212,6 +5213,7 @@
 		)
 		(property "Description" "IC ADC 10BIT SOT-23-5"
 			(at 171.45 44.45 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5554,6 +5556,7 @@
 		)
 		(property "Description" "RES 100 OHM 1% 1/10W 0603"
 			(at 236.982 72.39 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5998,6 +6001,7 @@
 		)
 		(property "Description" "CAP CER 1UF 35V X7R 0805"
 			(at 218.44 41.91 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7113,6 +7117,7 @@
 		)
 		(property "Description" "CAP CER 1UF 35V X7R 0805"
 			(at 156.21 40.64 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7238,6 +7243,7 @@
 	(symbol
 		(lib_id "Amplifier_Operational:MCP6002-xMS")
 		(at 175.26 95.25 0)
+		(mirror x)
 		(unit 2)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7245,10 +7251,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "fdd34ce4-b193-49f8-a997-63bc7b2ed6b9")
 		(property "Reference" "U10"
-			(at 175.26 85.09 0)
+			(at 175.26 105.41 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7258,7 +7263,7 @@
 			)
 		)
 		(property "Value" "MCP6002-xMS"
-			(at 175.26 87.63 0)
+			(at 175.26 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
